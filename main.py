@@ -19,17 +19,17 @@ class Graph():
         vertices = list(_graph.keys())
         n_vertices = len(vertices)
 
-        graph_as_matrix_adj = np.zeros((n_vertices, n_vertices))
+        graph_as_adj_matrix = np.zeros((n_vertices, n_vertices))
 
         for _key in range(n_vertices):
             for _value in range(n_vertices):
                 if (vertices[_key] in _graph and
                         vertices[_value] in _graph[vertices[_key]]):
-                    graph_as_matrix_adj[_key][_value] = 1
+                    graph_as_adj_matrix[_key][_value] = 1
 
-        return graph_as_matrix_adj
+        return graph_as_adj_matrix
 
-    def matrix_to_dict(self, matrix_adj):
+    def matrix_to_dict(self, adj_matrix):
         pass
 
 
