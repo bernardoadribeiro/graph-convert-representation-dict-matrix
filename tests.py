@@ -4,13 +4,15 @@ import numpy as np
 from main import Graph
 
 
-class TestConvertionAdjMatrix(TestCase):
+class TestConvertion(TestCase):
 
     def __init__(self, methodName: str = "runTest") -> None:
         self._graph = Graph()
         super().__init__(methodName)
 
     def test_convertion_dict_to_matrix(self):
+        print("\nTesting convertion of Dict to Matrix")
+
         adj_matrix_dict = {
             'A': ['C', 'B'],
             'B': ['A'],
@@ -30,10 +32,27 @@ class TestConvertionAdjMatrix(TestCase):
             "The result isn't equal to the expected result."
         )
 
-
-class TestConvertionMatrixToDict(TestCase):
     def test_convertion_matrix_to_dict(self):
-        pass
+        print("\nTesting convertion of Matrix to Dict")
+
+        _adj_matrix = [
+            [0, 1, 1],
+            [1, 0, 0],
+            [0, 0, 0],
+        ]
+
+        expected_result = {
+            'A': ['C', 'B'],
+            'B': ['A'],
+            'C': []
+        }
+        result = self._graph.matrix_to_dict(adj_matrix=_adj_matrix)
+
+        print(f"Expected:\n {expected_result}\n\nResult:\n {result}")
+        self.assertEqual(
+            result, expected_result,
+            "The result isn't equal to the expected result."
+        )
 
 
 if __name__ == '__main__':
