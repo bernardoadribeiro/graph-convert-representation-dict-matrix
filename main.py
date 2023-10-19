@@ -28,11 +28,11 @@ class Graph():
 
         graph_as_adj_matrix = np.zeros((vertices_quantity, vertices_quantity))
 
-        for _key in range(vertices_quantity):
-            for _value in range(vertices_quantity):
-                if (vertices[_key] in graph_dict and
-                        vertices[_value] in graph_dict[vertices[_key]]):
-                    graph_as_adj_matrix[_key][_value] = 1
+        for key in range(vertices_quantity):
+            for value in range(vertices_quantity):
+                if (vertices[key] in graph_dict and
+                        vertices[value] in graph_dict[vertices[key]]):
+                    graph_as_adj_matrix[key][value] = 1
 
         return graph_as_adj_matrix
 
@@ -53,16 +53,16 @@ class Graph():
         graph_as_dict = {}
         vertices_quantity = len(vertices)
 
-        for _key in range(vertices_quantity):
-            # `_key` is the index (or vertex)
-            graph_as_dict[vertices[_key]] = []  # Create the vertex
+        for key in range(vertices_quantity):
+            # `key` is the index (or vertex)
+            graph_as_dict[vertices[key]] = []  # Create the vertex
 
-            for _value in range(vertices_quantity):
-                # `_value` is a neighbor (or relationship) of the vertex
-                if adj_matrix[_key][_value] == 1:
-                    # We append the neighbor in position [_key][_value]
+            for value in range(vertices_quantity):
+                # `value` is a neighbor (or relationship) of the vertex
+                if adj_matrix[key][value] == 1:
+                    # We append the neighbor in position [key][value]
                     # to the vertex, if in the coordinate has the value `1`.
-                    graph_as_dict[vertices[_key]].append(vertices[_value])
+                    graph_as_dict[vertices[key]].append(vertices[value])
 
         return graph_as_dict
 
