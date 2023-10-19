@@ -29,7 +29,7 @@ class TestConvertion(unittest.TestCase):
             [1, 0, 0],
             [0, 0, 0],
         ]
-        result = Graph().dict_to_matrix(_graph=adj_matrix_dict)
+        result = Graph().dict_to_matrix(adj_matrix_dict)
 
         print(f"Expected:\n {expected_result}\n\nResult:\n {result}")
         self.assertTrue(
