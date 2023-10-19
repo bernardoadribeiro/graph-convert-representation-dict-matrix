@@ -14,6 +14,8 @@ class Graph():
 
     def dict_to_matrix(self, _graph: dict) -> NDArray[float64]:
         """
+            Converts the graph representation from Dictionary (key:value) to Adjacency Matrix
+
             `_graph`: dict that represet the graph that will be converted into adjacency matrix
         """
         vertices = list(_graph.keys())
@@ -31,6 +33,8 @@ class Graph():
 
     def matrix_to_dict(self, adj_matrix: list[list], vertices: list = []) -> dict:
         """
+            Converts the graph representation from Adjacency Matrix to Dictionary (key:value)
+
             `_adj_matrix`: Adjacency Matrix that represet the graph that will be converted into Dict
             representation {key:value}
             `_vertices`: vertices list of the graph
@@ -62,3 +66,5 @@ if __name__ == '__main__':
     from tests import load_and_run_tests
 
     load_and_run_tests()
+
+    # If you want to implement see the example:

@@ -5,12 +5,17 @@ from main import Graph
 
 
 class TestConvertion(unittest.TestCase):
+    """
+        Test the convertion between the two representations methos of graphs: dict and adjancency
+        matrix.
 
-    def __init__(self, methodName: str = "runTest") -> None:
-        self._graph = Graph()
-        super().__init__(methodName)
+        We are the functions `dict_to_matrix` and `matrix_to_dict` present in the `Graph class`.
+    """
 
     def test_convertion_dict_to_matrix(self):
+        """
+            Test convertion of Dict into adjacency Matrix representation.
+        """
         print("\nTesting convertion of Dict to Matrix")
 
         adj_matrix_dict = {
@@ -24,7 +29,7 @@ class TestConvertion(unittest.TestCase):
             [1, 0, 0],
             [0, 0, 0],
         ]
-        result = self._graph.dict_to_matrix(_graph=adj_matrix_dict)
+        result = Graph().dict_to_matrix(_graph=adj_matrix_dict)
 
         print(f"Expected:\n {expected_result}\n\nResult:\n {result}")
         self.assertTrue(
@@ -33,6 +38,9 @@ class TestConvertion(unittest.TestCase):
         )
 
     def test_convertion_matrix_to_dict(self):
+        """
+            Test convertion of adjacency Matrix into Dict representation.
+        """
         print("\nTesting convertion of Matrix to Dict")
 
         _adj_matrix = [
@@ -49,7 +57,7 @@ class TestConvertion(unittest.TestCase):
             'B': ['A'],
             'C': []
         }
-        result = self._graph.matrix_to_dict(_adj_matrix, _vertices)
+        result = Graph().matrix_to_dict(_adj_matrix, _vertices)
 
         print(f"Expected:\n {expected_result}\n\nResult:\n {result}")
         self.assertEqual(
@@ -59,6 +67,9 @@ class TestConvertion(unittest.TestCase):
 
 
 def load_and_run_tests():
+    """
+        Load and run all the test cases.
+    """
     print("Starting Unit Tests")
 
     test_suite = unittest.TestSuite()
