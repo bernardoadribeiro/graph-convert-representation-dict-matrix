@@ -4,13 +4,13 @@ from numpy import float64
 
 
 class Graph():
-    # def __init__(self, graph_dict: dict = None, adj_matrix=None) -> None:
-    #     if graph_dict:
-    #         self.graph_as_dict = graph_dict
-    #         self.vertices = list(graph_dict.keys())
+    """
+        Graph class which contains the methods that allow convert between Graph representations.
 
-    #     self.n_vertices = len(self.vertices)
-    #     self.graph_as_matrix_adj = np.zeros((self.n_vertices, self.n_vertices))
+        Methods:
+        - `dict_to_matrix(_graph: dict)` return a numpy `NDArray[float64]`
+        - `matrix_to_dict(adj_matrix: list[list], vertices: list` return a `dict`
+    """
 
     def dict_to_matrix(self, _graph: dict) -> NDArray[float64]:
         """
