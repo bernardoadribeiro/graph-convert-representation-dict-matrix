@@ -14,7 +14,7 @@ class Graph():
 
     def dict_to_matrix(self, _graph: dict) -> NDArray[float64]:
         """
-            _graph: dict that represet the graph that will be converted into adjacency matrix
+            `_graph`: dict that represet the graph that will be converted into adjacency matrix
         """
         vertices = list(_graph.keys())
         n_vertices = len(vertices)
@@ -29,9 +29,36 @@ class Graph():
 
         return graph_as_adj_matrix
 
-    def matrix_to_dict(self, adj_matrix):
-        pass
+    def matrix_to_dict(self, adj_matrix: list[list], vertices: list = []) -> dict:
+        """
+            `_adj_matrix`: Adjacency Matrix that represet the graph that will be converted into Dict
+            representation {key:value}
+            `_vertices`: vertices list of the graph
+        """
+        if vertices == []:
+            for i in range(len(adj_matrix)):
+                vertices.append(i)
+
+            print('Vertices gerado: ', vertices)
+
+        graph_as_dict = {}
+        n_vertices = len(vertices)
+
+        for _key in range(n_vertices):
+            # `_key` is the index (or vertex)
+            graph_as_dict[vertices[_key]] = []  # Create the vertex
+
+            for _value in range(n_vertices):
+                # `_value` is a neighbor (or relationship) of the vertex
+                if adj_matrix[_key][_value] == 1:
+                    # We append the neighbor in position [_key][_value]
+                    # to the vertex, if in the coordinate has the value `1`.
+                    graph_as_dict[vertices[_key]].append(vertices[_value])
+
+        return graph_as_dict
 
 
 if __name__ == '__main__':
-    print("Hello World!")
+    from tests import load_and_run_tests
+
+    load_and_run_tests()

@@ -1,10 +1,10 @@
-from unittest import TestCase, main
+import unittest
 import numpy as np
 
 from main import Graph
 
 
-class TestConvertion(TestCase):
+class TestConvertion(unittest.TestCase):
 
     def __init__(self, methodName: str = "runTest") -> None:
         self._graph = Graph()
@@ -40,13 +40,16 @@ class TestConvertion(TestCase):
             [1, 0, 0],
             [0, 0, 0],
         ]
+        _vertices = ['A', 'B', 'C']
 
+        # The result will be ordered from A-Z, because we are using `for` to
+        # go through the vertices and it's neighbors.
         expected_result = {
-            'A': ['C', 'B'],
+            'A': ['B', 'C'],
             'B': ['A'],
             'C': []
         }
-        result = self._graph.matrix_to_dict(adj_matrix=_adj_matrix)
+        result = self._graph.matrix_to_dict(_adj_matrix, _vertices)
 
         print(f"Expected:\n {expected_result}\n\nResult:\n {result}")
         self.assertEqual(
@@ -55,6 +58,19 @@ class TestConvertion(TestCase):
         )
 
 
-if __name__ == '__main__':
+def load_and_run_tests():
     print("Starting Unit Tests")
-    main()
+
+    test_suite = unittest.TestSuite()
+    test_suite.addTests(tests=[
+        TestConvertion('test_convertion_dict_to_matrix'),
+        TestConvertion('test_convertion_matrix_to_dict'),
+    ])
+
+    runner = unittest.TextTestRunner()
+    runner.run(test_suite)
+
+
+if __name__ == '__main__':
+    # unittest.main()
+    load_and_run_tests()
